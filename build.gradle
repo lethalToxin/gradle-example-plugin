@@ -1,0 +1,26 @@
+apply plugin: 'groovy'
+apply plugin: 'maven-publish'
+// In this section you declare where to find the dependencies of your project
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+// In this section you declare the dependencies for your production and test code
+dependencies {
+    compile gradleApi()
+    compile localGroovy()
+    compile "io.spring.gradle:dependency-management-plugin:0.5.5.RELEASE"
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            groupId 'com.example'
+            artifactId 'myplugin'
+            version '0.1-SNAPSHOT'
+            from components.java
+
+        }
+    }
+}
